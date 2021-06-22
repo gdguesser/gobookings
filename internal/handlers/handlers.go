@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gdguesser/gobookings/internal/config"
+	"github.com/gdguesser/gobookings/internal/forms"
 	"github.com/gdguesser/gobookings/internal/models"
 	"github.com/gdguesser/gobookings/internal/render"
 	"log"
@@ -56,7 +57,14 @@ func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
 
 // Reservation is the reservation page handler
 func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, r, "make-reservation.page.tmpl", &models.TemplateData{})
+	render.RenderTemplate(w, r, "make-reservation.page.tmpl", &models.TemplateData{
+		Form: forms.New(nil),
+	})
+}
+
+// PostReservation handles th posting o a reservation form
+func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
+
 }
 
 // Generals is the general quarters page handler
