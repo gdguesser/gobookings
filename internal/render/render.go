@@ -3,14 +3,13 @@ package render
 import (
 	"bytes"
 	"fmt"
-	"github.com/gdguesser/gobookings/pkg/models"
+	"github.com/gdguesser/gobookings/internal/config"
+	"github.com/gdguesser/gobookings/internal/models"
 	"github.com/justinas/nosurf"
 	"html/template"
 	"log"
 	"net/http"
 	"path/filepath"
-
-	"github.com/gdguesser/gobookings/pkg/config"
 )
 
 var functions = template.FuncMap{}

@@ -3,12 +3,11 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/gdguesser/gobookings/pkg/models"
+	"github.com/gdguesser/gobookings/internal/config"
+	"github.com/gdguesser/gobookings/internal/models"
+	"github.com/gdguesser/gobookings/internal/render"
 	"log"
 	"net/http"
-
-	"github.com/gdguesser/gobookings/pkg/config"
-	"github.com/gdguesser/gobookings/pkg/render"
 )
 
 // Repo the repository used by the handlers

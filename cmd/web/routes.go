@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/gdguesser/gobookings/pkg/config"
-	"github.com/gdguesser/gobookings/pkg/handlers"
+	"github.com/gdguesser/gobookings/internal/config"
+	"github.com/gdguesser/gobookings/internal/handlers"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"net/http"

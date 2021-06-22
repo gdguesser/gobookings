@@ -3,13 +3,12 @@ package main
 import (
 	"fmt"
 	"github.com/alexedwards/scs/v2"
-	"github.com/gdguesser/gobookings/pkg/config"
-	"github.com/gdguesser/gobookings/pkg/render"
+	"github.com/gdguesser/gobookings/internal/config"
+	"github.com/gdguesser/gobookings/internal/handlers"
+	"github.com/gdguesser/gobookings/internal/render"
 	"log"
 	"net/http"
 	"time"
-
-	"github.com/gdguesser/gobookings/pkg/handlers"
 )
 
 const portNumber = ":8083"
