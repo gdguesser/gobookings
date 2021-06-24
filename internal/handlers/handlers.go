@@ -156,5 +156,16 @@ func (m *Repository) Contact(w http.ResponseWriter, r *http.Request) {
 
 // ReservationSummary renders the reservation summary page
 func (m *Repository) ReservationSummary(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, r, "reservation-summary.page.tmpl", &models.TemplateData{})
+	reservation, ok := m.App.Session.Get(r.Context(), "reservation").(models.Reservation)
+	if !ok {
+		log.Println("Canno get item from session")
+		return
+	}
+
+	data := make(map[string]interface{})
+	data["reservation"] = reservation
+
+	render.RenderTemplate(w, r, "reservation-summary.page.tmpl", &models.TemplateData{
+		Data: data,
+	})
 }
