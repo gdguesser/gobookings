@@ -88,13 +88,13 @@ func getRoutes() http.Handler {
 
 	app.Session = session
 
-	tc, err := render.CreateTemplateCache()
+	tc, err := CreateTestTemplateCache()
 	if err != nil {
 		log.Fatal("Cannot create template cache", err)
 	}
 
 	app.TemplateCache = tc
-	app.UseCache = false
+	app.UseCache = true
 
 	repo := NewRepo(&app)
 	NewHandlers(repo)
