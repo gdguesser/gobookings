@@ -2,9 +2,11 @@ package handlers
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/gdguesser/gobookings/internal/config"
 	"github.com/gdguesser/gobookings/internal/forms"
+	"github.com/gdguesser/gobookings/internal/helpers"
 	"github.com/gdguesser/gobookings/internal/models"
 	"github.com/gdguesser/gobookings/internal/render"
 	"log"
@@ -33,26 +35,12 @@ func NewHandlers(r *Repository) {
 
 // Home is the home page handler
 func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
-	remoteIP := r.RemoteAddr
-
-	m.App.Session.Put(r.Context(), "remote_ip", remoteIP)
-
 	render.RenderTemplate(w, r, "home.page.tmpl", &models.TemplateData{})
 }
 
 // About is the about page handler
 func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
-
-	stringMap := make(map[string]string)
-	stringMap["test"] = "Hello Again"
-
-	remoteIP := m.App.Session.GetString(r.Context(), "remote_ip")
-
-	stringMap["remote_ip"] = remoteIP
-
-	render.RenderTemplate(w, r, "about.page.tmpl", &models.TemplateData{
-		StringMap: stringMap,
-	})
+	render.RenderTemplate(w, r, "about.page.tmpl", &models.TemplateData{})
 }
 
 // Reservation is the reservation page handler
@@ -70,8 +58,9 @@ func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
 // PostReservation handles th posting o a reservation form
 func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
+	err = errors.New("this is an error message")
 	if err != nil {
-		log.Println(err)
+		helpers.ServerError(w, err)
 		return
 	}
 

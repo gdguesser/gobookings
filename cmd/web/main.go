@@ -29,15 +29,17 @@ func main() {
 		log.Fatal(err)
 	}
 
+	fmt.Println(fmt.Sprintf("Starting application on port %s", portNumber))
+
 	srv := &http.Server{
 		Addr:    portNumber,
 		Handler: routes(&app),
 	}
 
-	fmt.Println(fmt.Sprintf("Starting application on port %s", portNumber))
-
 	err = srv.ListenAndServe()
-	log.Fatal(err)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func run() error {
