@@ -1,6 +1,6 @@
 .idea
-/migrations
 coverage.out
 bookings
 run.sh
 database.yml
+schema.sql
