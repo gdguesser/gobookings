@@ -32,10 +32,10 @@ type Rooms struct {
 
 // Restrictions is the Restrictions model
 type Restrictions struct {
-	ID        int
-	RestrictionName  string
-	CreatedAt time.Time
-	UpdatedAt time.Time
+	ID              int
+	RestrictionName string
+	CreatedAt       time.Time
+	UpdatedAt       time.Time
 }
 
 // Reservations is the Reservations model
@@ -47,21 +47,22 @@ type Reservations struct {
 	Phone     string
 	startDate time.Time
 	endDate   time.Time
-	RoomID int
+	RoomID    int
 	CreatedAt time.Time
 	UpdatedAt time.Time
 }
 
+// RoomRestrictions is the RoomRestrictions model
 type RoomRestrictions struct {
-	ID int
-	RoomID int
+	ID            int
+	RoomID        int
 	ReservationID int
 	RestrictionID int
-	Room Rooms
-	Reservation Reservations
-	Restriction Restrictions
-	startDate time.Time
-	endDate   time.Time
-	CreatedAt time.Time
-	UpdatedAt time.Time
+	Room          Rooms
+	Reservation   Reservations
+	Restriction   Restrictions
+	startDate     time.Time
+	endDate       time.Time
+	CreatedAt     time.Time
+	UpdatedAt     time.Time
 }
