@@ -53,8 +53,8 @@ type RoomRestriction struct {
 	Room          Room
 	Reservation   Reservation
 	Restriction   Restriction
-	startDate     time.Time
-	endDate       time.Time
+	StartDate     time.Time
+	EndDate       time.Time
 	CreatedAt     time.Time
 	UpdatedAt     time.Time
 }
