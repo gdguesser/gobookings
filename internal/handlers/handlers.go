@@ -77,7 +77,7 @@ func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
 		helpers.ServerError(w, err)
 		return
 	}
-	endDate, err := time.Parse(layout,ed)
+	endDate, err := time.Parse(layout, ed)
 	if err != nil {
 		helpers.ServerError(w, err)
 		return
@@ -95,8 +95,8 @@ func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
 		Phone:     r.Form.Get("phone"),
 		Email:     r.Form.Get("email"),
 		StartDate: startDate,
-		EndDate: endDate,
-		RoomID: roomID,
+		EndDate:   endDate,
+		RoomID:    roomID,
 	}
 
 	form := forms.New(r.PostForm)
