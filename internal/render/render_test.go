@@ -53,13 +53,13 @@ func TestRenderTemplate(t *testing.T) {
 
 func getSession() (*http.Request, error) {
 	r, err := http.NewRequest("GET", "/some-url", nil)
-	if err != nil{
+	if err != nil {
 		return nil, err
 	}
 
 	ctx := r.Context()
 	ctx, _ = session.Load(ctx, r.Header.Get("X-Session"))
-	r= r.WithContext(ctx)
+	r = r.WithContext(ctx)
 
 	return r, nil
 }
@@ -74,6 +74,5 @@ func TestCreateTemplateCache(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-
 
 }

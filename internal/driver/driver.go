@@ -3,6 +3,10 @@ package driver
 import (
 	"database/sql"
 	"time"
+
+	_ "github.com/jackc/pgconn"
+	_ "github.com/jackc/pgx/stdlib"
+	_ "github.com/jackc/pgx/v4"
 )
 
 // DB holds the database connection pool
@@ -39,14 +43,13 @@ func ConnectSQL(dsn string) (*DB, error) {
 
 // testDB tries to ping the database
 func testDB(d *sql.DB) error {
-	 err := d.Ping()
-	 if err != nil {
-	 	return err
-	 }
+	err := d.Ping()
+	if err != nil {
+		return err
+	}
 
-	 return nil
+	return nil
 }
-
 
 // NewDatabases creates a new database for the application
 func NewDatabases(dsn string) (*sql.DB, error) {

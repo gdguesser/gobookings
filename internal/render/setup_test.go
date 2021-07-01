@@ -15,7 +15,7 @@ import (
 var session *scs.SessionManager
 var testApp config.AppConfig
 
-func TestMain(m *testing.M)  {
+func TestMain(m *testing.M) {
 
 	gob.Register(models.Reservation{})
 
@@ -41,7 +41,7 @@ func TestMain(m *testing.M)  {
 	os.Exit(m.Run())
 }
 
-type myWriter struct {}
+type myWriter struct{}
 
 func (tw *myWriter) Header() http.Header {
 	var h http.Header

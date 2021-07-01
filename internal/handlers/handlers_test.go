@@ -8,15 +8,15 @@ import (
 )
 
 type postData struct {
-	key string
+	key   string
 	value string
 }
 
 var theTests = []struct {
-	name string
-	url string
-	method string
-	params []postData
+	name               string
+	url                string
+	method             string
+	params             []postData
 	expectedStatusCode int
 }{
 	{"home", "/", "GET", []postData{}, http.StatusOK},
@@ -60,11 +60,11 @@ func TestHandlers(t *testing.T) {
 			}
 		} else {
 			values := url.Values{}
-			for _, x := range e.params{
+			for _, x := range e.params {
 				values.Add(x.key, x.value)
 			}
 
-			resp, err := ts.Client().PostForm(ts.URL + e.url, values)
+			resp, err := ts.Client().PostForm(ts.URL+e.url, values)
 			if err != nil {
 				t.Log(err)
 				t.Fatal(err)
