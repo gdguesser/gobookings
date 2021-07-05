@@ -17,6 +17,7 @@ var testApp config.AppConfig
 
 func TestMain(m *testing.M) {
 
+	// what am I going to put in the session
 	gob.Register(models.Reservation{})
 
 	// change this to true when in production
@@ -45,14 +46,14 @@ type myWriter struct{}
 
 func (tw *myWriter) Header() http.Header {
 	var h http.Header
-
 	return h
 }
 
-func (tw *myWriter) WriteHeader(i int) {}
+func (tw *myWriter) WriteHeader(i int) {
+
+}
 
 func (tw *myWriter) Write(b []byte) (int, error) {
 	length := len(b)
-
 	return length, nil
 }
