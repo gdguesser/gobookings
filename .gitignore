@@ -2,5 +2,5 @@
 coverage.out
 bookings
 run.sh
-database.example.yml
+database.yml
 schema.sql
