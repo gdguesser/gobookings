@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/gdguesser/gobookings/internal/config"
 	"github.com/gdguesser/gobookings/internal/driver"
 	"github.com/gdguesser/gobookings/internal/forms"
@@ -179,10 +180,25 @@ func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	//send notifications
+	htmlMessage := fmt.Sprintf(`
+		<strong>Reservation Confirmation</strong><br>
+		Dear %s:, <br>
+		This is to confirm your reservation from %s to %s.
+	`,reservation.FirstName, reservation.StartDate.Format("2006-01-02"), reservation.EndDate.Format("2006-01-02"))
+
+	msg := models.MailData{
+		To:      reservation.Email,
+		From:    "me@here.com",
+		Subject: "Reservation Confirmation",
+		Content: htmlMessage,
+	}
+
+	m.App.MailChan <- msg
+
 	m.App.Session.Put(r.Context(), "reservation", reservation)
 
 	http.Redirect(w, r, "/reservation-summary", http.StatusSeeOther)
-
 }
 
 // Generals renders the room page
