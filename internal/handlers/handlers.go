@@ -453,6 +453,7 @@ func (m *Repository) ShowLogin(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+// PostShowLogin handles logging the user in
 func (m *Repository) PostShowLogin(w http.ResponseWriter, r *http.Request) {
 	_ = m.App.Session.RenewToken(r.Context())
 
