@@ -258,7 +258,7 @@ func TestRepository_PostReservation(t *testing.T) {
 
 	handler.ServeHTTP(rr, req)
 
-	if rr.Code != http.StatusTemporaryRedirect {
+	if rr.Code != http.StatusSeeOther {
 		t.Errorf("PostReservation handler failed when trying to fail inserting reservation: got %d, wanted %d", rr.Code, http.StatusTemporaryRedirect)
 	}
 
@@ -282,7 +282,7 @@ func TestRepository_PostReservation(t *testing.T) {
 
 	handler.ServeHTTP(rr, req)
 
-	if rr.Code != http.StatusTemporaryRedirect {
+	if rr.Code != http.StatusSeeOther {
 		t.Errorf("PostReservation handler failed when trying to fail inserting reservation: got %d, wanted %d", rr.Code, http.StatusTemporaryRedirect)
 	}
 }
@@ -360,7 +360,7 @@ func TestRepository_PostAvailability(t *testing.T) {
 	handler.ServeHTTP(rr, req)
 
 	// since we have rooms available, we expect to get status http.StatusOK
-	if rr.Code != http.StatusOK {
+	if rr.Code != http.StatusSeeOther {
 		t.Errorf("Post availability when rooms are available gave wrong status code: got %d, wanted %d", rr.Code, http.StatusOK)
 	}
 
@@ -483,7 +483,7 @@ func TestRepository_PostAvailability(t *testing.T) {
 	handler.ServeHTTP(rr, req)
 
 	// since we have rooms available, we expect to get status http.StatusTemporaryRedirect
-	if rr.Code != http.StatusTemporaryRedirect {
+	if rr.Code != http.StatusSeeOther {
 		t.Errorf("Post availability when database query fails gave wrong status code: got %d, wanted %d", rr.Code, http.StatusTemporaryRedirect)
 	}
 }
@@ -797,7 +797,7 @@ func TestRepository_BookRoom(t *testing.T) {
 
 	handler.ServeHTTP(rr, req)
 
-	if rr.Code != http.StatusTemporaryRedirect {
+	if rr.Code != http.StatusSeeOther {
 		t.Errorf("BookRoom handler returned wrong response code: got %d, wanted %d", rr.Code, http.StatusTemporaryRedirect)
 	}
 }
