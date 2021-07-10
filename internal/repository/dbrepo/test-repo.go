@@ -57,20 +57,32 @@ func (m *testDBRepo) Authenticate(email, tespPassword string) (int, string, erro
 // AllReservations return a slice of all reservations
 func (m *testDBRepo) AllReservations() ([]models.Reservation, error) {
 	var reservations []models.Reservation
-
 	return reservations, nil
 }
 
 // AllNewReservations return a slice of all reservations
 func (m *testDBRepo) AllNewReservations() ([]models.Reservation, error) {
 	var reservations []models.Reservation
-
 	return reservations, nil
 }
 
 // GetReservationByID returns one reservation by ID
 func (m *testDBRepo) GetReservationByID(id int) (models.Reservation, error) {
 	var res models.Reservation
-
 	return res, nil
+}
+
+// UpdateReservation updates a user in the database
+func (m *testDBRepo) UpdateReservation(u models.Reservation) error {
+	return nil
+}
+
+// DeleteReservation deletes one reservation by ID
+func (m *testDBRepo) DeleteReservation(id int) error {
+	return nil
+}
+
+// UpdateProcessedForReservation updates processed for a reservation by ID
+func (m *testDBRepo) UpdateProcessedForReservation(id, processed int) error {
+	return nil
 }
